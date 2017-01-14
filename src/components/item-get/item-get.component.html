@@ -1,0 +1,127 @@
+<div class="container below-nav">
+  <h1>Add a New Item</h1>
+  <form name="sentItem" id="itemForm" validate>
+    <div class="row control-group">
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <label>Item Name:</label>
+        <input type="text" class="form-control" placeholder="Item Name" id="name" required data-validation-required-message="Please enter the name of your item"
+          v-model="newItem.name">
+        <p class="help-block text-danger"></p>
+      </div>
+    </div>
+    <div class="row control-group">
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <label>Primary Category:</label>
+        <select name="primaryCtg" v-model="newItem.primaryCtg">
+            <option value="electronics">Electronics</option>
+            <option value="furniture">Furniture</option>
+            <option value="clothing">Clothing</option>
+            <option value="art">Art</option>
+            <option value="misc">Misc</option>
+          </select>
+        <p class="help-block text-danger"></p>
+      </div>
+    </div>
+    <div class="row control-group" v-if="newItem.primaryCtg === 'electronics'">
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <label>Secondary Category:</label>
+        <select name="primaryCtg" v-model="newItem.secondaryCtg">
+            <option value="media">Media</option>
+            <option value="computers">Computers & Technology</option>
+            <option value="home">Home Electronics</option>
+            <option value="accessories">Accessories</option>
+            <option value="other">Other</option>
+          </select>
+        <p class="help-block text-danger"></p>
+      </div>
+    </div>
+    <div class="row control-group" v-if="newItem.primaryCtg === 'furniture'">
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <label>Secondary Category:</label>
+        <select name="primaryCtg" v-model="newItem.secondaryCtg">
+            <option value="sofas">Sofas & Chairs</option>
+            <option value="storage">Storage Spaces</option>
+            <option value="tables">Tables & Desks</option>
+            <option value="other">Other</option>
+          </select>
+        <p class="help-block text-danger"></p>
+      </div>
+    </div>
+    <div class="row control-group" v-if="newItem.primaryCtg === 'clothing'">
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <label>Secondary Category:</label>
+        <select name="primaryCtg" v-model="newItem.secondaryCtg">
+            <option value="shirts">Shirts</option>
+            <option value="pants">Pants & Shorts</option>
+            <option value="Shoes">Footware</option>
+            <option value="accessories">Accessories</option>            
+            <option value="other">Other</option>
+          </select>
+        <p class="help-block text-danger"></p>
+      </div>
+    </div>
+    <div class="row control-group" v-if="newItem.primaryCtg === 'art'">
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <label>Secondary Category:</label>
+        <select name="primaryCtg" v-model="newItem.secondaryCtg">
+            <option value="paintings">Paintings</option>
+            <option value="sculptures">Sculptures</option>          
+            <option value="other">Other</option>
+          </select>
+        <p class="help-block text-danger"></p>
+      </div>
+    </div>
+    <div class="row control-group">
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <label>Status</label>
+        <select name="status" v-model="newItem.status">
+            <option value="best">Good as New</option>
+            <option value="good">Good Enough</option>          
+            <option value="bad">Very Used</option>
+            <option value="worst">Looks Like Garbage</option>
+          </select>
+        <p class="help-block text-danger"></p>
+      </div>
+    </div>
+    <div class="row control-group">
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <label>Location:</label>
+        <input type="number" class="form-control" placeholder="Latitude" id="lat" required data-validation-required-message="Please enter the lat of your item"
+          v-model="newItem.loc.lat">
+        <input type="number" class="form-control" placeholder="Longitude" id="lng" required data-validation-required-message="Please enter the lng of your item"
+          v-model="newItem.loc.lng">
+        <p class="help-block text-danger"></p>
+        <button @click.prevent="getCurrLoc">Get Current Location</button>
+      </div>
+    </div>
+    <div class="row control-group">
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <label>Description:</label>
+        <input type="text" class="form-control" placeholder="Description" id="desc" required data-validation-required-message="Please enter a description of your item"
+          v-model="newItem.desc">
+        <p class="help-block text-danger"></p>
+      </div>
+    </div>
+    <div class="row control-group">
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <label>Image:</label>
+        <input type="file" accept="image/*;capture=camera" class="form-control" placeholder="Image" id="img" required data-validation-required-message="Please enter an image of your item"
+          v-on:change="drawOnCanvas">
+        <p class="help-block text-danger"></p>
+      </div>
+    </div>
+    <div v-show="isCanvas">
+      <canvas ref="canvas" width="200" height="200"></canvas>
+      <button @click.prevent="uploadImg">Upload Image</button>
+    </div>
+    <br>
+    <hr>
+    <div id="success"></div>
+    <div class="row">
+      <div class="form-group col-xs-12">
+        <!--<vue-toastr ref="toastr"></vue-toastr>-->
+        <button type="submit" class="btn btn-success btn-lg" @click.prevent="sendItem">Send</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -5,7 +5,7 @@ import Signin from './components/signin';
 import Signup from './components/signup';
 import Shop from './components/shop';
 import Cart from './components/cart';
-import Admin from './components/admin/admin';
+import AddItem from './components/item-get';
 
 const routes = [{
   path     : '/',
@@ -32,9 +32,9 @@ const routes = [{
     component: Cart
   },
   {
-    path     : '/admin',
-    name     : 'admin',
-    component: Admin
+    path     : '/item-get',
+    name     : 'addItem',
+    component: AddItem
   },
   
   { path: '*', redirect: { name: 'home' } }];
