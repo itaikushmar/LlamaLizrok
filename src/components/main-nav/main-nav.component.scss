@@ -2,6 +2,10 @@
   color: lightgreen !important;
 }
 
+.logoImg {
+  width: 100px;
+}
+
 ul.dropdown-cart{
   width: 500px;
   min-width:250px;
@@ -59,8 +63,8 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
   font-weight: 700;
   border: none;
   border-radius: 0;
-  height: 100px;
-  padding-top:25px;
+  height: 96px;
+  padding-top:0px;
   position: fixed;
   width:100%;
   top: 0;
@@ -77,6 +81,15 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 .navbar-default .navbar-brand{
   color: #fff;
   font-size: 28px;
+  padding: 0px;
+}
+
+.nav {
+  padding-top: 25px;
+}
+
+.container {
+  padding: 0px;
 }
 
 .dropdown > *:hover {

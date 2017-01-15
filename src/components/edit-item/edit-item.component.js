@@ -1,27 +1,27 @@
 export default {
     data() {
         return {
-            newItem: {
-                name: '', primaryCtg: '', secondaryCtg: '', status: '', loc: { lat: '', lng: '' }, desc: '', img: ''
-            },
             ctx: null,
             canvas: null,
-            isCanvas: false,
+            shouldShowImgCanvas: false,
+            ctgHandler: '',
+            loc: {desc: '', lat: null, lng: null}
         }
     },
     methods: {
         sendItem() {
-            // console.log('clicked', this.newItem);
-            if (!this.newItem.img) alert("You have not added an image!", "Try again...");
-            // if (!this.newItem.img) this.$root.$refs.toastr.e("You have not added an image!", "Try again...");
-            else {
-                this.$http.post('http://localhost:3003/data/item', this.newItem)
-                    .then(() => {
-                        this.newItem = {
-                            name: '', primaryCtg: '', secondaryCtg: '', status: '', loc: { lat: '', lng: '' }, desc: '', img: ''
-                        };
-                        this.isCanvas = false;
-                    })
+            const timeCreated = new Date();
+            const file = this.$refs.inputFile.files;
+            const editItemForm = this.$refs.editItemForm;
+            if (file && file.length) {
+                var formData = new FormData(editItemForm);
+                formData.append('file', file[0], file[0].name);
+                formData.append('loc', JSON.stringify(this.loc));
+                formData.append('createdAt', timeCreated);
+                this.$http.post('item', formData)
+                    .then(() => this.shouldShowImgCanvas = false);
+            } else {
+                this.$refs.toastr.w("You have not added an image!", "Try again...");
             }
         },
         initCanvas() {
@@ -37,20 +37,20 @@ export default {
                     this.ctx.drawImage(img, 0, 0, 200, 200);
                 }
                 img.src = event.target.result;
-                this.isCanvas = true;
+                this.shouldShowImgCanvas = true;
             }
             reader.readAsDataURL(e.target.files[0]);
         },
         uploadImg() {
             var imgToSave = this.ctx.getImageData(0, 0, 200, 200)
-            this.$http.post('http://localhost:3003/data/img', imgToSave)
+            this.$http.post('img', imgToSave)
                 .then(res => res.json())
                 .then(res => this.newItem.img = 'http://localhost:3003/data/img/' + res._id);
         },
         getCurrLoc() {
             navigator.geolocation.getCurrentPosition(position => {
-                this.newItem.loc.lat = position.coords.latitude;
-                this.newItem.loc.lng = position.coords.longitude;
+                this.loc.lat = position.coords.latitude;
+                this.loc.lng = position.coords.longitude;
             });
         }
     },

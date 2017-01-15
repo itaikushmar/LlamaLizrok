@@ -1,7 +1,7 @@
 export default  {
-  name    : 'product',
+  name    : 'item',
   props   : {
-    product: {
+    item: {
       type    : Object,
       required: true
     }

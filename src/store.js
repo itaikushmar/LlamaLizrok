@@ -1,15 +1,30 @@
 import Vuex from 'vuex';
-import authModule from './modules/auth/auth.module';
-import shopModule from './modules/shop/shop.module';
-import cartModule from './modules/cart/cart.module';
+import Vue from 'vue';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
 export default new Vuex.Store({
-  modules: {
-    auth : authModule,
-    shop: shopModule,
-    cart : cartModule
+  state: {
+    items: [],
   },
-  strict : !isProduction
+  actions: {
+    getItems({ commit }) {
+      Vue.http.get('item')
+        .then(res => res.json())
+        .then(items => {
+          commit("setItems", items);
+          return items;
+        });
+    }
+  },
+  getters: {
+
+  },
+  mutations: {
+    setItems(state, payload) {
+      state.items = payload;
+    }
+  },
+  strict: !isProduction
+
 })

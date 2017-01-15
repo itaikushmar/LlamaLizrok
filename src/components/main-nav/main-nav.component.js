@@ -5,27 +5,27 @@ import {REMOVE_FROM_CART} from '../../modules/cart/cart.module';
 
 export default {
   name    : 'main-nav',
-  methods : {
-    signout() {
-      authService.signout();
-      this.$store.commit(SIGN_OUT);
-      this.$router.push('/');
-    },
-    ...mapMutations({
-      removeFromCart: REMOVE_FROM_CART
-    })
-  },
-  computed: {
+  // methods : {
+  //   signout() {
+  //     authService.signout();
+  //     this.$store.commit(SIGN_OUT);
+  //     this.$router.push('/');
+  //   },
+  //   ...mapMutations({
+  //     removeFromCart: REMOVE_FROM_CART
+  //   })
+  // },
+  // computed: {
 
-    ...mapGetters([
-      'cartLength',
-      'cart'
-    ]),
-    ...mapGetters({
-        isLoggedIn: 'isLoggedIn',
-        user: 'user'
-      }
-    ),
-  }
+  //   ...mapGetters([
+  //     'cartLength',
+  //     'cart'
+  //   ]),
+  //   ...mapGetters({
+  //       isLoggedIn: 'isLoggedIn',
+  //       user: 'user'
+  //     }
+  //   ),
+  // }
 
 }
