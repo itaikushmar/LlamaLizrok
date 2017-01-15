@@ -8,8 +8,8 @@ export default  {
   },
   methods : {
     sendForm () {
-      console.log('clicked' , this.contactForm);
-      this.$http.post('http://localhost:3003/data/contact', this.contactForm)
+      // console.log('clicked' , this.contactForm);
+      this.$http.post('contact', this.contactForm)
             .then(() => {
                 this.toggleForm();
                 this.contactForm = {name: '', email: '', phone: '', msg: ''};
@@ -19,7 +19,7 @@ export default  {
       this.formHidden = true; 
       setTimeout (() => {
         this.formHidden = false;
-        console.log('formhidden' , this.formHidden);
+        // console.log('formhidden' , this.formHidden);
       }, 5000)
     }
   }

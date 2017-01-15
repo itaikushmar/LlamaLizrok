@@ -1,11 +1,14 @@
 import VueRouter from 'vue-router';
+import Vue from 'vue';
 
 import Home from './components/home';
 import Signin from './components/signin';
 import Signup from './components/signup';
-import Shop from './components/shop';
+import ItemList from './components/item-list';
 import Cart from './components/cart';
-import Admin from './components/admin/admin';
+import EditItem from './components/edit-item';
+
+Vue.http.options.root = 'http://localhost:3003/data'
 
 const routes = [{
   path     : '/',
@@ -22,9 +25,9 @@ const routes = [{
     component: Signup
   },
   {
-    path     : '/shop',
-    name     : 'shop',
-    component: Shop
+    path     : '/item-list',
+    name     : 'item-list',
+    component: ItemList
   },
   {
     path     : '/cart',
@@ -32,9 +35,9 @@ const routes = [{
     component: Cart
   },
   {
-    path     : '/admin',
-    name     : 'admin',
-    component: Admin
+    path     : '/edit-item',
+    name     : 'editItem',
+    component: EditItem
   },
   
   { path: '*', redirect: { name: 'home' } }];
