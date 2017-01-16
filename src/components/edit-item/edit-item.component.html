@@ -12,60 +12,53 @@
       <div class="form-group col-xs-12 floating-label-form-group controls">
         <label>Primary Category:</label>
         <select name="primaryCtg" v-model="ctgHandler">
-            <option value="electronics">Electronics</option>
-            <option value="furniture">Furniture</option>
-            <option value="clothing">Clothing</option>
-            <option value="art">Art</option>
-            <option value="misc">Misc</option>
-          </select>
+          <option v-for="primaryCtg in ctgs.primaryCtgs">
+            {{primaryCtg}}
+          </option>
+        </select>
         <p class="help-block text-danger"></p>
       </div>
     </div>
-    <div class="row control-group" v-if="ctgHandler === 'electronics'">
+    <div class="row control-group" v-if="ctgHandler === 'Electronics'">
       <div class="form-group col-xs-12 floating-label-form-group controls">
         <label>Secondary Category:</label>
         <select name="secondaryCtg">
-            <option value="media">Media</option>
-            <option value="computers">Computers & Technology</option>
-            <option value="home">Home Electronics</option>
-            <option value="accessories">Accessories</option>
-            <option value="other">Other</option>
-          </select>
+          <option v-for="secondaryCtg in ctgs.secondaryCtgs.electronics">
+              {{secondaryCtg}}
+          </option> 
+        </select>
         <p class="help-block text-danger"></p>
       </div>
     </div>
-    <div class="row control-group" v-if="ctgHandler === 'furniture'">
+    <div class="row control-group" v-if="ctgHandler === 'Furniture'">
       <div class="form-group col-xs-12 floating-label-form-group controls">
         <label>Secondary Category:</label>
         <select name="secondaryCtg">
-            <option value="sofas">Sofas & Chairs</option>
-            <option value="storage">Storage Spaces</option>
-            <option value="tables">Tables & Desks</option>
-            <option value="other">Other</option>
-          </select>
+          <option v-for="secondaryCtg in ctgs.secondaryCtgs.furniture">
+              {{secondaryCtg}}
+          </option> 
+        </select>
         <p class="help-block text-danger"></p>
       </div>
     </div>
-    <div class="row control-group" v-if="ctgHandler === 'clothing'">
+    <div class="row control-group" v-if="ctgHandler === 'Clothing'">
       <div class="form-group col-xs-12 floating-label-form-group controls">
         <label>Secondary Category:</label>
         <select name="secondaryCtg">
-            <option value="shirts">Shirts</option>
-            <option value="pants">Pants & Shorts</option>
-            <option value="Shoes">Footware</option>
-            <option value="accessories">Accessories</option>            
-            <option value="other">Other</option>
-          </select>
+          <option v-for="secondaryCtg in ctgs.secondaryCtgs.clothing">
+            {{secondaryCtg}}
+          </option> 
+        </select>
         <p class="help-block text-danger"></p>
       </div>
     </div>
-    <div class="row control-group" v-if="ctgHandler === 'art'">
+    <div class="row control-group" v-if="ctgHandler === 'Art'">
       <div class="form-group col-xs-12 floating-label-form-group controls">
         <label>Secondary Category:</label>
-        <select name="secondaryCtg">
-            <option value="paintings">Paintings</option>
-            <option value="sculptures">Sculptures</option>          
-            <option value="other">Other</option>
+          <select name="secondaryCtg">
+            <option v-for="secondaryCtg in ctgs.secondaryCtgs.art">
+              {{secondaryCtg}}
+            </option> 
           </select>
         <p class="help-block text-danger"></p>
       </div>
@@ -86,9 +79,9 @@
       <div class="form-group col-xs-12 floating-label-form-group controls">
         <label>Location:</label>
         <input type="number" class="form-control" placeholder="Latitude" id="lat" required data-validation-required-message="Please enter the lat of your item"
-        v-model="loc.lat">
+          v-model="loc.lat">
         <input type="number" class="form-control" placeholder="Longitude" id="lng" required data-validation-required-message="Please enter the lng of your item"
-        v-model="loc.lng">
+          v-model="loc.lng">
         <p class="help-block text-danger"></p>
         <button @click.prevent="getCurrLoc">Get Current Location</button>
       </div>
@@ -103,8 +96,8 @@
     <div class="row control-group">
       <div class="form-group col-xs-12 floating-label-form-group controls">
         <label>Image:</label>
-        <input ref="inputFile" type="file" accept="image/*" capture="camera" class="form-control" placeholder="Image" id="img" required data-validation-required-message="Please enter an image of your item"
-          v-on:change="drawOnCanvas">
+        <input ref="inputFile" type="file" accept="image/*" capture="camera" class="form-control" placeholder="Image" id="img" required
+          data-validation-required-message="Please enter an image of your item" v-on:change="drawOnCanvas">
         <p class="help-block text-danger"></p>
       </div>
     </div>

@@ -1,0 +1,35 @@
+<section class="below-nav">
+    <div>
+        <button class="btn btn-info active" @click="resetFilter">All Items</button>
+        <div>
+            <label>Primary Category:</label>
+            <select v-model="currCtg.primaryCtg" v-on:change="setFilteredItems">
+            <option v-for="primaryCtg in ctgs.primaryCtgs">{{primaryCtg}}</option>
+          </select>
+        </div>
+        <div v-if="currCtg.primaryCtg === 'Electronics'">
+            <label>Type of Electronics?</label>
+            <select v-model="currCtg.secondaryCtg" v-on:change="setFilteredItems">
+            <option v-for="secondaryCtg in ctgs.secondaryCtgs.electronics">{{secondaryCtg}}</option>
+          </select>
+        </div>
+        <div v-if="currCtg.primaryCtg === 'Furniture'">
+            <label>Type of Furniture?</label>
+            <select v-model="currCtg.secondaryCtg" v-on:change="setFilteredItems">
+            <option v-for="secondaryCtg in ctgs.secondaryCtgs.furniture">{{secondaryCtg}}</option>
+          </select>
+        </div>
+        <div v-if="currCtg.primaryCtg === 'Clothing'">
+            <label>Type of Clothing?</label>
+            <select v-model="currCtg.secondaryCtg" v-on:change="setFilteredItems">
+            <option v-for="secondaryCtg in ctgs.secondaryCtgs.clothing">{{secondaryCtg}}</option>
+          </select>
+        </div>
+        <div v-if="currCtg.primaryCtg === 'Art'">
+            <label>Type of Art?</label>
+            <select v-model="currCtg.secondaryCtg" v-on:change="setFilteredItems">
+            <option v-for="secondaryCtg in ctgs.secondaryCtgs.art">{{secondaryCtg}}</option>
+          </select>
+        </div>
+    </div>
+</section>

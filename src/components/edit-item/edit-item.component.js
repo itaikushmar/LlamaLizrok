@@ -5,12 +5,12 @@ export default {
             canvas: null,
             shouldShowImgCanvas: false,
             ctgHandler: '',
-            loc: {desc: '', lat: null, lng: null}
+            loc: { desc: '', lat: null, lng: null }
         }
     },
     methods: {
         sendItem() {
-            const timeCreated = new Date();
+            const timeCreated = Date.now();
             const file = this.$refs.inputFile.files;
             const editItemForm = this.$refs.editItemForm;
             if (file && file.length) {
@@ -52,6 +52,11 @@ export default {
                 this.loc.lat = position.coords.latitude;
                 this.loc.lng = position.coords.longitude;
             });
+        }
+    },
+    computed: {
+        ctgs() {
+            return this.$store.state.ctgs;
         }
     },
     mounted() {
