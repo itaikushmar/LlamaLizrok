@@ -4,7 +4,7 @@ import Vue from 'vue';
 import Home from './components/home';
 import Signin from './components/signin';
 import Signup from './components/signup';
-import ItemList from './components/item-list';
+import ItemCenter from './components/item-center';
 import Cart from './components/cart';
 import EditItem from './components/edit-item';
 
@@ -25,9 +25,9 @@ const routes = [{
     component: Signup
   },
   {
-    path     : '/item-list',
-    name     : 'item-list',
-    component: ItemList
+    path     : '/item-center',
+    name     : 'item-center',
+    component: ItemCenter
   },
   {
     path     : '/cart',
