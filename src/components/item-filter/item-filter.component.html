@@ -2,7 +2,7 @@
     <div>
         <button class="btn btn-info active" @click="resetFilter">All Items</button>
         <div>
-            <label>Primary Category:</label>
+            <label>Choose your Category:</label>
             <select v-model="currCtg.primaryCtg" v-on:change="setFilteredItems">
             <option v-for="primaryCtg in ctgs.primaryCtgs">{{primaryCtg}}</option>
           </select>

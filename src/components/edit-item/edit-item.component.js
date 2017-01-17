@@ -19,8 +19,14 @@ export default {
                 formData.append('loc', JSON.stringify(this.loc));
                 formData.append('createdAt', timeCreated);
                 this.$http.post('item', formData)
-                    .then(() => this.shouldShowImgCanvas = false);
-            } else {
+                    .then(() => {
+                        this.$refs.toastr.s("You have successfully added an image! /Redirecting...", "Great!")
+                        setTimeout(() =>
+                            this.$router.push('/item-center')
+                            , 1500)
+                    });
+            }
+            else {
                 this.$refs.toastr.w("You have not added an image!", "Try again...");
             }
         },
