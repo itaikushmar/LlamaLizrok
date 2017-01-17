@@ -6,26 +6,16 @@ const isProduction = process.env.NODE_ENV === 'production';
 export default new Vuex.Store({
   state: {
     items: [],
-    ctgs: {
-      primaryCtgs: [
-        'Electronics', 'Furniture', 'Clothing', 'Art', 'Misc'
-      ],
-      secondaryCtgs: {
-        electronics: [
-          'Media', 'Computers & Technology', 'Home Electronics', 'Accessories', 'Other'
-        ],
-        furniture: [
-          'Sofas & Chairs', 'Storage Spaces', 'Tables & Desks', 'Other'
-        ],
-        clothing: [
-          'Shirts', 'Pants & Shorts', 'Footware', 'Accessories', 'Other'
-        ],
-        art: [
-          'Paintings', 'Sculptures', 'Other'
-        ]
-      }
-    },
-    currFilter: { primaryCtg: 'all', secondaryCtg: 'all' }
+    item: {},
+    ctgs: [
+      { name: 'Electronics', subs: ['Media', 'Computers & Technology', 'Home Electronics', 'Accessories', 'Other'] },
+      { name: 'Furniture', subs: ['Sofas & Chairs', 'Storage Spaces', 'Tables & Desks', 'Other'] },
+      { name: 'Clothing', subs: ['Shirts', 'Pants & Shorts', 'Footware', 'Accessories', 'Other'] },
+      { name: 'Art', subs: ['Paintings', 'Sculptures', 'Other'] },
+      { name: 'Misc' }
+    ],
+    currFilter: { primaryCtg: 'All', secondaryCtg: 'All' },
+    currItemIdx: ''
   },
   actions: {
     getItems({ commit }) {
@@ -35,21 +25,29 @@ export default new Vuex.Store({
           commit("setItems", items);
           return items;
         });
+    },
+    getItem({ commit }) {
+      Vue.http.get('item/' + currItemIdx)
+        .then(res => res.json())
+        .then(item => {
+          commit("setItem", item);
+          return item;
+        });
     }
   },
   getters: {
     filterItems(state) {
-      if (state.currFilter.primaryCtg === 'all') {
+      if (state.currFilter.primaryCtg === 'All') {
         return state.items;
       }
       else {
-        if (state.currFilter.secondaryCtg === 'all') {
+        if (state.currFilter.secondaryCtg === 'All') {
           return state.items.filter(item => item.primaryCtg === state.currFilter.primaryCtg);
         }
         else {
-          return state.items.filter(item => 
-              item.secondaryCtg === state.currFilter.secondaryCtg &&
-              item.primaryCtg === state.currFilter.primaryCtg
+          return state.items.filter(item =>
+            item.secondaryCtg === state.currFilter.secondaryCtg &&
+            item.primaryCtg === state.currFilter.primaryCtg
           );
         }
       }
@@ -59,9 +57,13 @@ export default new Vuex.Store({
     setItems(state, payload) {
       state.items = payload;
     },
+    setItem(state, payload) {
+      state.item = payload;
+    },
+    setCurrItemIdx(state, payload) {
+      state.currItemIdx = payload;
+    },
     setFilter(state, payload) {
-      // ************ why doesn't this work? ************
-      // state.currFilter = payload;
       state.currFilter.primaryCtg = payload.primaryCtg;
       state.currFilter.secondaryCtg = payload.secondaryCtg;
     }

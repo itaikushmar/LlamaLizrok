@@ -3,7 +3,7 @@
     <div class="no-item" v-if="items.length === 0">No items to display...</div>
     <div>
       <div class="col-xs-12 col-sm-4" v-for="item in items">
-        <item :item="item"></item>
+        <item-preview :item="item"></item-preview>
       </div>
     </div>
 
