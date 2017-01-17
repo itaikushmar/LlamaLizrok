@@ -1,7 +1,7 @@
 export default {
     data() {
         return {
-            currCtg: {primaryCtg: 'all', secondaryCtg: 'all'}
+            currCtg: { primaryCtg: 'all', secondaryCtg: 'all' }
         }
     },
     methods: {
@@ -9,13 +9,15 @@ export default {
             this.$store.commit('setFilter', this.currCtg);
         },
         resetFilter() {
-            this.currCtg = {primaryCtg: 'all', secondaryCtg: 'all'};
-            this.setFilteredItems();
+            // ************ why doesn't this work? ************
+            // this.currCtg = {primaryCtg: 'all', secondaryCtg: 'all'};
+            // this.setFilteredItems();
+            this.$store.commit('setFilter', { primaryCtg: 'all', secondaryCtg: 'all' });
         }
     },
     computed: {
         ctgs() {
             return this.$store.state.ctgs;
-        },
+        }
     }
 }

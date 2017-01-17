@@ -5,7 +5,6 @@ import Home from './components/home';
 import Signin from './components/signin';
 import Signup from './components/signup';
 import ItemCenter from './components/item-center';
-import Cart from './components/cart';
 import EditItem from './components/edit-item';
 
 Vue.http.options.root = 'http://localhost:3003/data'
@@ -28,11 +27,6 @@ const routes = [{
     path     : '/item-center',
     name     : 'item-center',
     component: ItemCenter
-  },
-  {
-    path     : '/cart',
-    name     : 'cart',
-    component: Cart
   },
   {
     path     : '/edit-item',
