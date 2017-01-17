@@ -6,7 +6,7 @@ import Signin from './components/signin';
 import Signup from './components/signup';
 import ItemCenter from './components/item-center';
 import EditItem from './components/edit-item';
-import Item from './components/item';
+import ItemDetails from './components/item-details';
 
 Vue.http.options.root = 'http://localhost:3003/data'
 
@@ -36,8 +36,13 @@ const routes = [{
   },
   {
     path     : '/item',
-    name     : 'Item',
-    component: Item
+    name     : 'ItemDetails',
+    component: ItemDetails,
+    children: [{path: ':_id', component: ItemDetails}]
+  },
+  {
+    path     : 'http://localhost:3003',
+    name     : 'chat',
   },
   
   { path: '*', redirect: { name: 'home' } }];

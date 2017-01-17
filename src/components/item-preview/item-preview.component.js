@@ -9,11 +9,4 @@ export default {
       required: true
     }
   },
-  methods: {
-    displayItem() {
-      this.$store.commit('setCurrItemIdx', this.item._id)
-      // this.$store.dispatch('getItem');
-      // this.$router.push('item');
-    }
-  },
 }

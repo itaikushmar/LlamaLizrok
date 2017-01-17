@@ -6,7 +6,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 export default new Vuex.Store({
   state: {
     items: [],
-    item: {},
+    currItem: {},
     ctgs: [
       { name: 'Electronics', subs: ['Media', 'Computers & Technology', 'Home Electronics', 'Accessories', 'Other'] },
       { name: 'Furniture', subs: ['Sofas & Chairs', 'Storage Spaces', 'Tables & Desks', 'Other'] },
@@ -26,8 +26,8 @@ export default new Vuex.Store({
           return items;
         });
     },
-    getItem({ commit }) {
-      Vue.http.get('item/' + currItemIdx)
+    getCurrItem({ commit  }, itemId) {
+      Vue.http.get('item/' + itemId)
         .then(res => res.json())
         .then(item => {
           commit("setItem", item);
@@ -58,7 +58,7 @@ export default new Vuex.Store({
       state.items = payload;
     },
     setItem(state, payload) {
-      state.item = payload;
+      state.currItem = payload;
     },
     setCurrItemIdx(state, payload) {
       state.currItemIdx = payload;
