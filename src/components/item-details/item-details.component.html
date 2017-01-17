@@ -1,0 +1,26 @@
+<div currItem="currItem" class="item thumbnail flex justify-center">
+    <ul class="clean-list">
+        <img :src="`${currItem.imgUrl}`">
+        <li class="item-name">
+           Item: {{currItem.name}} 
+        </li>
+        <li class="item-desc">
+            Description: {{currItem.desc}} 
+        </li>
+        <li class="item-ctg">
+            Category: {{currItem.primaryCtg}} => {{currItem.secondaryCtg}} 
+        </li>
+        <li class="item-status">
+            Condition: {{currItem.status}} 
+        </li>
+        <li class="item-loc">
+            Location:  
+        </li>
+        <li class="item-added">
+            Added At: {{new Date(currItem.createdAt)}} 
+        </li>
+    <router-link to="/item-center">
+        <button class="btn btn-lg btn-success">Back</button>
+    </router-link>
+    </ul>
+</div>

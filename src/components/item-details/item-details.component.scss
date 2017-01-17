@@ -1,0 +1,32 @@
+@import '../../scss/functions';
+
+.item {
+    // margin: 20px;
+    margin: em(120px);
+    padding: em(15px);
+    text-align: center;
+    font-size: rem(15px);
+}
+
+li {
+    padding: 5px;
+}
+
+.item-name {
+    font-size: rem(30px);
+    text-decoration: underline;
+}
+
+.item-desc {
+    font-size: rem(20px);
+}
+
+.item-added {
+    margin-bottom: em(10px);
+}
+
+img {
+    max-width: em(500px);
+    max-height: em(500px);
+    margin: em(10px);
+}
