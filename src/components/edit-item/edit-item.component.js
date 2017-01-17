@@ -1,3 +1,6 @@
+import GoogleMapsLoader from 'google-maps'
+GoogleMapsLoader.KEY = 'AIzaSyCc7ltRRQHGvEF7OwlrhRMR1QtXrNH9cZc';
+
 export default {
     data() {
         return {
@@ -5,7 +8,8 @@ export default {
             canvas: null,
             shouldShowImgCanvas: false,
             ctgHandler: '',
-            loc: { desc: '', lat: null, lng: null }
+            loc: { desc: '', lat: null, lng: null },
+            map: null
         }
     },
     methods: {
@@ -53,11 +57,32 @@ export default {
                 .then(res => res.json())
                 .then(res => this.newItem.img = 'http://localhost:3003/data/img/' + res._id);
         },
-        getCurrLoc() {
-            navigator.geolocation.getCurrentPosition(position => {
-                this.loc.lat = position.coords.latitude;
-                this.loc.lng = position.coords.longitude;
+        loadMap() {
+            var defaultLoc = { lat: 32.088189, lng: 34.803140 };
+            const options = {
+                zoom: 15,
+                center: defaultLoc
+            };
+            GoogleMapsLoader.load(google => {
+                this.map = new google.maps.Map(this.$refs.map, options);
+                // this.renderPlaceMarkers();
+
+                navigator.geolocation.getCurrentPosition(position => {
+                    this.placeMarkerAndPanTo({ 
+                        lat: position.coords.latitude, 
+                        lng: position.coords.longitude
+                    });
+                    this.loc.lat = position.coords.latitude;
+                    this.loc.lng = position.coords.longitude;
+                });
             });
+        },
+        placeMarkerAndPanTo(latLng) {
+            var marker = new google.maps.Marker({
+                position: latLng,
+                map: this.map
+            });
+            this.map.panTo(latLng);
         }
     },
     computed: {
@@ -66,6 +91,10 @@ export default {
         }
     },
     mounted() {
-        this.initCanvas()
+        this.initCanvas(),
+        this.loadMap()
+    },
+    components: {
+        GoogleMapsLoader
     }
 }

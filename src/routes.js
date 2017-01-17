@@ -7,6 +7,7 @@ import Signup from './components/signup';
 import ItemCenter from './components/item-center';
 import EditItem from './components/edit-item';
 import ItemDetails from './components/item-details';
+import Chat from './components/chat';
 
 Vue.http.options.root = 'http://localhost:3003/data'
 
@@ -41,8 +42,9 @@ const routes = [{
     children: [{path: ':_id', component: ItemDetails}]
   },
   {
-    path     : 'http://localhost:3003',
+    path     : '/chat',
     name     : 'chat',
+    component: Chat
   },
   
   { path: '*', redirect: { name: 'home' } }];
