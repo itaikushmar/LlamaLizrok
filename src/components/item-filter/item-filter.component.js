@@ -1,19 +1,28 @@
 export default {
     data() {
         return {
-            currCtg: { primaryCtg: 'all', secondaryCtg: 'all' }
+            currCtg: { primaryCtg: 'All', secondaryCtg: 'All' },
+            ctgIndex: null
         }
     },
     methods: {
         setFilteredItems() {
             this.$store.commit('setFilter', this.currCtg);
+            switch (this.currCtg.primaryCtg) {
+                case 'Electronics':
+                    this.ctgIndex = 0;
+                    break;
+                case 'Furniture':
+                    this.ctgIndex = 1;
+                    break;
+                case 'Clothing':
+                    this.ctgIndex = 2;
+                    break;
+                case 'Art':
+                    this.ctgIndex = 3;
+                    break;
+            }
         },
-        resetFilter() {
-            // ************ why doesn't this work? ************
-            // this.currCtg = {primaryCtg: 'all', secondaryCtg: 'all'};
-            // this.setFilteredItems();
-            this.$store.commit('setFilter', { primaryCtg: 'all', secondaryCtg: 'all' });
-        }
     },
     computed: {
         ctgs() {

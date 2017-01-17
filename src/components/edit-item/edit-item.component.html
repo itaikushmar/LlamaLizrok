@@ -12,8 +12,8 @@
       <div class="form-group col-xs-12 floating-label-form-group controls">
         <label>Primary Category:</label>
         <select name="primaryCtg" v-model="ctgHandler">
-          <option v-for="primaryCtg in ctgs.primaryCtgs">
-            {{primaryCtg}}
+          <option v-for="primaryCtg in ctgs">
+            {{primaryCtg.name}}
           </option>
         </select>
         <p class="help-block text-danger"></p>
@@ -23,7 +23,7 @@
       <div class="form-group col-xs-12 floating-label-form-group controls">
         <label>Secondary Category:</label>
         <select name="secondaryCtg">
-          <option v-for="secondaryCtg in ctgs.secondaryCtgs.electronics">
+          <option v-for="secondaryCtg in ctgs[0].subs">
               {{secondaryCtg}}
           </option> 
         </select>
@@ -34,7 +34,7 @@
       <div class="form-group col-xs-12 floating-label-form-group controls">
         <label>Secondary Category:</label>
         <select name="secondaryCtg">
-          <option v-for="secondaryCtg in ctgs.secondaryCtgs.furniture">
+          <option v-for="secondaryCtg in ctgs[1].subs">
               {{secondaryCtg}}
           </option> 
         </select>
@@ -45,7 +45,7 @@
       <div class="form-group col-xs-12 floating-label-form-group controls">
         <label>Secondary Category:</label>
         <select name="secondaryCtg">
-          <option v-for="secondaryCtg in ctgs.secondaryCtgs.clothing">
+          <option v-for="secondaryCtg in ctgs[2].subs">
             {{secondaryCtg}}
           </option> 
         </select>
@@ -56,7 +56,7 @@
       <div class="form-group col-xs-12 floating-label-form-group controls">
         <label>Secondary Category:</label>
           <select name="secondaryCtg">
-            <option v-for="secondaryCtg in ctgs.secondaryCtgs.art">
+            <option v-for="secondaryCtg in ctgs[3].subs">
               {{secondaryCtg}}
             </option> 
           </select>

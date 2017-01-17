@@ -1,4 +1,4 @@
-import Item from '../item';
+import ItemPreview from '../item-preview';
 
 export default {
   props: {
@@ -7,6 +7,6 @@ export default {
     }
   },
   components: {
-    Item
+    ItemPreview
   }
 }

@@ -1,34 +1,17 @@
 <section class="below-nav">
     <div>
-        <button class="btn btn-info active" @click="resetFilter">All Items</button>
         <div>
             <label>Choose your Category:</label>
             <select v-model="currCtg.primaryCtg" v-on:change="setFilteredItems">
-            <option v-for="primaryCtg in ctgs.primaryCtgs">{{primaryCtg}}</option>
+              <option value="All">All Categories</option>
+              <option v-for="primaryCtg in ctgs">{{primaryCtg.name}}</option>
           </select>
         </div>
-        <div v-if="currCtg.primaryCtg === 'Electronics'">
-            <label>Type of Electronics?</label>
+        <div v-if="currCtg.primaryCtg !== 'All' && currCtg.primaryCtg !== 'Misc'">
+            <label>Type of {{currCtg.primaryCtg}}?</label>
             <select v-model="currCtg.secondaryCtg" v-on:change="setFilteredItems">
-            <option v-for="secondaryCtg in ctgs.secondaryCtgs.electronics">{{secondaryCtg}}</option>
-          </select>
-        </div>
-        <div v-if="currCtg.primaryCtg === 'Furniture'">
-            <label>Type of Furniture?</label>
-            <select v-model="currCtg.secondaryCtg" v-on:change="setFilteredItems">
-            <option v-for="secondaryCtg in ctgs.secondaryCtgs.furniture">{{secondaryCtg}}</option>
-          </select>
-        </div>
-        <div v-if="currCtg.primaryCtg === 'Clothing'">
-            <label>Type of Clothing?</label>
-            <select v-model="currCtg.secondaryCtg" v-on:change="setFilteredItems">
-            <option v-for="secondaryCtg in ctgs.secondaryCtgs.clothing">{{secondaryCtg}}</option>
-          </select>
-        </div>
-        <div v-if="currCtg.primaryCtg === 'Art'">
-            <label>Type of Art?</label>
-            <select v-model="currCtg.secondaryCtg" v-on:change="setFilteredItems">
-            <option v-for="secondaryCtg in ctgs.secondaryCtgs.art">{{secondaryCtg}}</option>
+              <option value="All">All Categories</option>
+            <option v-for="secondaryCtg in ctgs[ctgIndex].subs">{{secondaryCtg}}</option>
           </select>
         </div>
     </div>

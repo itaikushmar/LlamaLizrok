@@ -20,7 +20,7 @@ export default {
                 formData.append('createdAt', timeCreated);
                 this.$http.post('item', formData)
                     .then(() => {
-                        this.$refs.toastr.s("You have successfully added an image! /Redirecting...", "Great!")
+                        this.$refs.toastr.s("You have successfully added an image! Redirecting...", "Great!")
                         setTimeout(() =>
                             this.$router.push('/item-center')
                             , 1500)
