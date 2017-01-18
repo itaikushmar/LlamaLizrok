@@ -1,11 +1,17 @@
 @import '../../scss/functions';
+@import '../../scss/vars';
+@import '../../scss/layout';
 
 .item {
-    // margin: 20px;
     margin: em(120px);
     padding: em(15px);
     text-align: center;
     font-size: rem(15px);
+    @include for-mobile-only {
+        margin: em(20px);
+        margin-top: em(120px);
+        margin-bottom: em(120px);
+    }
 }
 
 li {
@@ -29,4 +35,8 @@ img {
     max-width: em(500px);
     max-height: em(500px);
     margin: em(10px);
+      @include for-mobile-only {
+         max-width: 350px;
+         max-height: 350px;
+  }
 }

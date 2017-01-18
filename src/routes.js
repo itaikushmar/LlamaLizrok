@@ -8,6 +8,7 @@ import ItemCenter from './components/item-center';
 import EditItem from './components/edit-item';
 import ItemDetails from './components/item-details';
 import Chat from './components/chat';
+import MapView from './components/map-view';
 
 Vue.http.options.root = 'http://localhost:3003/data'
 
@@ -45,6 +46,11 @@ const routes = [{
     path     : '/chat',
     name     : 'chat',
     component: Chat
+  },
+  {
+    path     : '/map',
+    name     : 'mapView',
+    component: MapView
   },
   
   { path: '*', redirect: { name: 'home' } }];

@@ -15,6 +15,9 @@ export default {
     computed: {
         filterItems() {
             return this.$store.getters.filterItems;
+        },
+        currItemsView() {
+            return this.$store.state.currItemsView;
         }
     },
     components: {

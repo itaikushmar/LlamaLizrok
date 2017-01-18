@@ -22,13 +22,11 @@ export default {
                 formData.append('file', file[0], file[0].name);
                 formData.append('loc', JSON.stringify(this.loc));
                 formData.append('createdAt', timeCreated);
-                this.$http.post('item', formData)
-                    .then(() => {
-                        this.$refs.toastr.s("You have successfully added an image! Redirecting...", "Great!")
-                        setTimeout(() =>
-                            this.$router.push('/item-center')
-                            , 1500)
-                    });
+                this.$store.dispatch('addNewItem', formData);
+                this.$refs.toastr.s("You have successfully added an image! Redirecting...", "Great!")
+                setTimeout(() =>
+                    this.$router.push('/item-center')
+                    , 1500);
             }
             else {
                 this.$refs.toastr.w("You have not added an image!", "Try again...");
@@ -51,12 +49,6 @@ export default {
             }
             reader.readAsDataURL(e.target.files[0]);
         },
-        uploadImg() {
-            var imgToSave = this.ctx.getImageData(0, 0, 200, 200)
-            this.$http.post('img', imgToSave)
-                .then(res => res.json())
-                .then(res => this.newItem.img = 'http://localhost:3003/data/img/' + res._id);
-        },
         loadMap() {
             var defaultLoc = { lat: 32.088189, lng: 34.803140 };
             const options = {
@@ -65,11 +57,9 @@ export default {
             };
             GoogleMapsLoader.load(google => {
                 this.map = new google.maps.Map(this.$refs.map, options);
-                // this.renderPlaceMarkers();
-
                 navigator.geolocation.getCurrentPosition(position => {
-                    this.placeMarkerAndPanTo({ 
-                        lat: position.coords.latitude, 
+                    this.placeMarkerAndPanTo({
+                        lat: position.coords.latitude,
                         lng: position.coords.longitude
                     });
                     this.loc.lat = position.coords.latitude;
@@ -92,7 +82,7 @@ export default {
     },
     mounted() {
         this.initCanvas(),
-        this.loadMap()
+            this.loadMap()
     },
     components: {
         GoogleMapsLoader

@@ -1,7 +1,7 @@
 <section>
     <item-filter class="item-filter"></item-filter>
-    <item-list :items="filterItems"></item-list>
-        <map-view></map-view>
+    <item-list :items="filterItems" v-if="currItemsView === 'list'"></item-list>
+        <map-view v-else></map-view>
 
 
 </section>  

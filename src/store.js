@@ -15,7 +15,8 @@ export default new Vuex.Store({
       { name: 'Misc' }
     ],
     currFilter: { primaryCtg: 'All', secondaryCtg: 'All' },
-    currItemIdx: ''
+    currItemIdx: '',
+    currItemsView: 'list'
   },
   actions: {
     getItems({ commit }) {
@@ -24,6 +25,14 @@ export default new Vuex.Store({
         .then(items => {
           commit("setItems", items);
           return items;
+        });
+    },
+    addNewItem({ commit }, newItem) {
+      Vue.http.post('item', newItem)
+        .then(res => res.json())
+        .then(item => {
+          commit("setNewItem", item);
+          return item;
         });
     },
     getCurrItem({ commit  }, itemId) {
@@ -60,8 +69,14 @@ export default new Vuex.Store({
     setItem(state, payload) {
       state.currItem = payload;
     },
+    setNewItem(state, payload) {
+      state.items.push(payload);
+    },
     setCurrItemIdx(state, payload) {
       state.currItemIdx = payload;
+    },
+    setItemsView(state, payload) {
+      state.currItemsView = payload;
     },
     setFilter(state, payload) {
       state.currFilter.primaryCtg = payload.primaryCtg;

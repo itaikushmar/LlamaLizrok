@@ -8,10 +8,15 @@ import router from './routes';
 import MainNav from './components/main-nav';
 
 const app = new Vue({
+  data () {
+    return {
+      show: true
+    }
+  },
   router,
   store,
   components: {
-    MainNav
+    MainNav,
   }
 }).$mount('#app');
 

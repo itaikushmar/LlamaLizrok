@@ -2,7 +2,9 @@ export default {
     data() {
         return {
             currCtg: { primaryCtg: 'All', secondaryCtg: 'All' },
-            ctgIndex: null
+            ctgIndex: null,
+            toggleView: 'list',
+            viewMarker: 'map'
         }
     },
     methods: {
@@ -23,8 +25,16 @@ export default {
                     break;
             }
         },
-        changeView(){
-           
+        toggleMap(){
+            if (this.toggleView === 'list') {
+                this.toggleView = 'map';
+                this.viewMarker = 'list'
+            }
+            else {
+                this.toggleView = 'list';
+                this.viewMarker = 'map'
+            }
+            this.$store.commit('setItemsView', this.toggleView);
         }
     },
     computed: {

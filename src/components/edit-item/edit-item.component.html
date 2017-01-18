@@ -1,5 +1,6 @@
 
 <div class="container below-nav">
+  <div class="form-style-5">
   <h1>Add a New Item</h1>
   <form name="editItem" id="itemForm" ref="editItemForm" validate>
     <div class="row control-group">
@@ -76,20 +77,15 @@
         <p class="help-block text-danger"></p>
       </div>
     </div>
-    <div class="row control-group">
-      <div class="form-group col-xs-12 floating-label-form-group controls">
-        <!--<label>Location:</label>
-        <input type="number" class="form-control" placeholder="Latitude" id="lat" required data-validation-required-message="Please enter the lat of your item"
-          v-model="loc.lat">
-        <input type="number" class="form-control" placeholder="Longitude" id="lng" required data-validation-required-message="Please enter the lng of your item"
-          v-model="loc.lng">
-        <p class="help-block text-danger"></p>
-        <button @click.prevent="getCurrLoc">Get Current Location</button>-->
-
         <section class="place-map">
           <div class="map" ref="map"></div>
         </section>
-
+<br>
+    <div class="row control-group">
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <label>Location Description:</label>
+        <input type="text" class="form-control" placeholder="Anything to add about the location?" id="loc-desc" required data-validation-required-message="Where is it?"
+          v-model="loc.desc">
       </div>
     </div>
     <div class="row control-group">
@@ -120,4 +116,5 @@
     </div>
   </form>
   <vue-toastr ref="toastr"></vue-toastr>
+  </div>
 </div>

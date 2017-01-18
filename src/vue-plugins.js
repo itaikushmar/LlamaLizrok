@@ -18,3 +18,4 @@ Vue.use(VueRouter);
 Vue.use(VueResource);
 
 Vue.component('vue-toastr', Toastr);
+
