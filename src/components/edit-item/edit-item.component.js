@@ -7,7 +7,7 @@ export default {
             ctx: null,
             canvas: null,
             shouldShowImgCanvas: false,
-            currCtg: { primaryCtg: 'All', secondaryCtg: 'All' },
+            ctgHandler: '',
             loc: { desc: '', lat: null, lng: null },
             map: null
         }
@@ -68,8 +68,8 @@ export default {
                 // this.renderPlaceMarkers();
 
                 navigator.geolocation.getCurrentPosition(position => {
-                    this.placeMarkerAndPanTo({
-                        lat: position.coords.latitude,
+                    this.placeMarkerAndPanTo({ 
+                        lat: position.coords.latitude, 
                         lng: position.coords.longitude
                     });
                     this.loc.lat = position.coords.latitude;
@@ -92,7 +92,7 @@ export default {
     },
     mounted() {
         this.initCanvas(),
-            this.loadMap()
+        this.loadMap()
     },
     components: {
         GoogleMapsLoader

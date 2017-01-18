@@ -23,6 +23,9 @@ export default {
                     break;
             }
         },
+        changeView(){
+           
+        }
     },
     computed: {
         ctgs() {

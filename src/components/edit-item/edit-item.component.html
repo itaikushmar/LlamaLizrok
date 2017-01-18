@@ -1,3 +1,4 @@
+
 <div class="container below-nav">
   <h1>Add a New Item</h1>
   <form name="editItem" id="itemForm" ref="editItemForm" validate>
@@ -11,7 +12,7 @@
     <div class="row control-group">
       <div class="form-group col-xs-12 floating-label-form-group controls">
         <label>Primary Category:</label>
-        <select name="primaryCtg" v-model="currCtg.primaryCtg">
+        <select name="primaryCtg" v-model="ctgHandler">
           <option v-for="primaryCtg in ctgs">
             {{primaryCtg.name}}
           </option>
@@ -118,5 +119,5 @@
       </div>
     </div>
   </form>
- <vue-toastr ref="toastr"></vue-toastr>
+  <vue-toastr ref="toastr"></vue-toastr>
 </div>
