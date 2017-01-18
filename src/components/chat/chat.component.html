@@ -5,5 +5,7 @@
     <form class="chat-input">
       <input  v-model="chatMsg.msg" />
       <button @click.prevent="sendMsg">&#187;</button>
+      <button class="glyphicon glyphicon-play-circle" @click.prevent="startVoiceRecognition"></button>
+      <button class="glyphicon glyphicon-stop" @click.prevent="stopVoiceRecognition"></button>
     </form>
   </div>

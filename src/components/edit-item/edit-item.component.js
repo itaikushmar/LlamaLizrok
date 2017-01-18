@@ -14,7 +14,7 @@ export default {
     },
     methods: {
         sendItem() {
-            const timeCreated = Date.now();
+            const timeCreated = new Date();
             const file = this.$refs.inputFile.files;
             const editItemForm = this.$refs.editItemForm;
             if (file && file.length) {
