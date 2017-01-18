@@ -1,6 +1,6 @@
 <section class="below-nav">
-    <div>
-        <div class="inline">
+    <div class="selection_div">
+        <div>
             <label>Choose your Category:</label>
             <select v-model="currCtg.primaryCtg" v-on:change="setFilteredItems">
               <option value="All">All Categories</option>
@@ -14,8 +14,8 @@
             <option v-for="secondaryCtg in ctgs[ctgIndex].subs">{{secondaryCtg}}</option>
           </select>
         </div>
-        <div class="inline right">
-            <button @click="toggleMap">
+        <div class="view_icon">
+            <button class="toggle-button" @click="toggleMap">
                 <div class="glyphicon glyphicon-map-marker" v-if="viewMarker === 'map'"></div>
                 <div class="glyphicon glyphicon-list-alt" v-if="viewMarker === 'list'"></div>
             </button>

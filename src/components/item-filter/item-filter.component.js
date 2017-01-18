@@ -41,5 +41,9 @@ export default {
         ctgs() {
             return this.$store.state.ctgs;
         }
+    },
+    created () {
+        this.toggleView = 'list';
+        this.$store.commit('setItemsView', this.toggleView);
     }
 }

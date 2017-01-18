@@ -1,20 +1,27 @@
 section {
     background-color: yellowgreen;
-    padding-top: 120px;
-    padding-left: 10px;
-    padding-bottom: 20px;
+    padding: 120px 0px 20px 10px;
 }
 
-.btn {
-    margin-bottom: 10px;
+.glyphicon {
+    font-size: 30px;
 }
 
-.inline{
-    display: inline;
+.relative{
+    position: relative; 
 }
+
 .right {
-    float: right;
+            position: relative; 
+
 }
-.togglePic{
-    
+
+.selection_div{
+    position: relative;
+}
+
+.view_icon{
+    position: absolute;
+    top: -5px;
+    right: 0;
 }
