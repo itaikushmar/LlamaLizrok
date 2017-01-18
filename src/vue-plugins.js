@@ -5,7 +5,7 @@ import VueResource from 'vue-resource';
 import VeeValidate from 'vee-validate';
 import Toastr from 'vue-toastr';
 import * as jQuery from 'jquery';
-import GoogleMaps from 'google-maps/lib/google.js';
+import GoogleMaps from 'google-maps/lib/Google.js';
 
 // window.jQuery = jQuery;
 // import * as LatLngPicker from 'gmap/js/jquery-gmaps-latlon-picker.js';

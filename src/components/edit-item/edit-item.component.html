@@ -11,7 +11,7 @@
     <div class="row control-group">
       <div class="form-group col-xs-12 floating-label-form-group controls">
         <label>Primary Category:</label>
-        <select name="primaryCtg" v-model="ctgHandler">
+        <select name="primaryCtg" v-model="currCtg.primaryCtg">
           <option v-for="primaryCtg in ctgs">
             {{primaryCtg.name}}
           </option>
@@ -118,5 +118,5 @@
       </div>
     </div>
   </form>
-  <vue-toastr ref="toastr"></vue-toastr>
+ <vue-toastr ref="toastr"></vue-toastr>
 </div>

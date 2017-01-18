@@ -1,5 +1,11 @@
+@import '../../scss/vars';
+@import '../../scss/layout';
+
 .container {
     padding-top: 20px;
+    @include for-mobile-only {
+        padding-top: 200px;
+    }
 }
 
 .no-item {
