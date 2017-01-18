@@ -24,8 +24,7 @@ export default {
             }
         },
         changeView(){
-            console.log('change route');
-            
+           
         }
     },
     computed: {
