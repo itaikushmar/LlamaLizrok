@@ -1,6 +1,6 @@
 <section class="below-nav">
     <div>
-        <div>
+        <div class="inline">
             <label>Choose your Category:</label>
             <select v-model="currCtg.primaryCtg" v-on:change="setFilteredItems">
               <option value="All">All Categories</option>
@@ -13,6 +13,9 @@
               <option value="All">All Categories</option>
             <option v-for="secondaryCtg in ctgs[ctgIndex].subs">{{secondaryCtg}}</option>
           </select>
+        </div>
+        <div class="inline right">
+            <button @click="changeView">Map-View</button>
         </div>
     </div>
 </section>

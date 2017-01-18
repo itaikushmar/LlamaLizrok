@@ -23,6 +23,10 @@ export default {
                     break;
             }
         },
+        changeView(){
+            console.log('change route');
+            
+        }
     },
     computed: {
         ctgs() {
