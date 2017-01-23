@@ -23,7 +23,7 @@ export default {
                 formData.append('loc', JSON.stringify(this.loc));
                 formData.append('createdAt', timeCreated);
                 this.$store.dispatch('addNewItem', formData);
-                this.$refs.toastr.s("You have successfully added an image! Redirecting...", "Great!")
+                this.$refs.toastr.s("You have successfully added an item! Redirecting...", "Great!")
                 setTimeout(() =>
                     this.$router.push('/item-center')
                     , 1500);

@@ -10,7 +10,7 @@ import ItemDetails from './components/item-details';
 import Chat from './components/chat';
 import MapView from './components/map-view';
 
-Vue.http.options.root = 'http://localhost:3003/data'
+Vue.http.options.root = (process.env.NODE_ENV === 'development' ? 'http://localhost:3003/data' : '/data');
 
 const routes = [{
   path     : '/',

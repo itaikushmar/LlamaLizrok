@@ -33,7 +33,7 @@ name: 'chat',
   created () {
     const nickName = window.prompt('Nick name?')
     this.chatMsg.nickName = nickName || this.chatMsg.nickName
-    this.socket = io.connect('http://localhost:3003')
+    this.socket = io.connect('https://llamalizrok.herokuapp.com')
     this.socket.on('chat message', chatMsg => {
       this.chatMsgs.push(chatMsg)
     })
