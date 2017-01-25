@@ -22,14 +22,16 @@ export default {
                 formData.append('file', file[0], file[0].name);
                 formData.append('loc', JSON.stringify(this.loc));
                 formData.append('createdAt', timeCreated);
-                this.$store.dispatch('addNewItem', formData);
-                this.$refs.toastr.s("You have successfully added an item! Redirecting...", "Great!")
-                setTimeout(() =>
-                    this.$router.push('/item-center')
-                    , 1500);
-            }
-            else {
-                this.$refs.toastr.w("You have not added an image!", "Try again...");
+                this.$store.dispatch('addNewItem', formData)
+                    .then(res => {
+                        if (res === undefined) this.$refs.toastr.w("Something went wrong", "Try Again!");
+                        else {
+                            this.$refs.toastr.s("You have successfully added an item! Redirecting...", "Great!");
+                            setTimeout(() =>
+                                this.$router.push('/item-center')
+                                , 1500)
+                        }
+                    })
             }
         },
         initCanvas() {

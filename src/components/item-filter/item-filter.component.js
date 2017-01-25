@@ -25,7 +25,7 @@ export default {
                     break;
             }
         },
-        toggleMap(){
+        toggleMap() {
             if (this.toggleView === 'list') {
                 this.toggleView = 'map';
                 this.viewMarker = 'list'
@@ -42,7 +42,7 @@ export default {
             return this.$store.state.ctgs;
         }
     },
-    created () {
+    created() {
         this.toggleView = 'list';
         this.$store.commit('setItemsView', this.toggleView);
     }
