@@ -6,7 +6,7 @@
       <input  v-model="chatMsg.msg" />
       <button class = "glyphicon glyphicon-send" @click.prevent="sendMsg"></button>
       <button class="glyphicon glyphicon-headphones" v-if ="speechState === 'play'"@click.prevent="startVoiceRecognition"></button>
-      <button class="glyphicon glyphicon-stop" v-else @click.prevent="stopVoiceRecognition"></button>
+      <button v-else @click.prevent="stopVoiceRecognition" style="background: url(../../assets/moustachellama.png)"></button>
       <div>
       </div>
     </form>
