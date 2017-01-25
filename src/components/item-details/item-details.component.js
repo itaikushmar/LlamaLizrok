@@ -13,7 +13,8 @@ export default {
         this.$store.dispatch('getCurrItem', itemId);
     },
     methods: {
-    loadMap() {
+        loadMap() {
+            // console.log(this.$store.state.currItem)
             var defaultLoc = { lat: 32.088189, lng: 34.803140 };
             const options = {
                 zoom: 15,
@@ -23,8 +24,8 @@ export default {
                 this.map = new google.maps.Map(this.$refs.map, options);
                 navigator.geolocation.getCurrentPosition(position => {
                     this.placeMarkerAndPanTo({
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
+                        lat: this.currItem.loc.lat,
+                        lng: this.currItem.loc.lng
                     });
                     this.loc.lat = position.coords.latitude;
                     this.loc.lng = position.coords.longitude;
@@ -37,16 +38,21 @@ export default {
                 map: this.map
             });
             this.map.panTo(latLng);
-        }
+        },
+        hara() {
+            console.log(this.currItem.loc.lat)
+        },
     },
     computed: {
-        currItem () {
+        currItem() {
             return this.$store.state.currItem;
-            }
-        },
-        mounted() {
+        }
+    },
+    watch: {
+        currItem: function () {
             this.loadMap()
-        },
+        }
+    },
     components: {
         GoogleMapsLoader
     }
