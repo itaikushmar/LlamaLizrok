@@ -38,16 +38,18 @@ export default {
                 map: this.map
             });
             this.map.panTo(latLng);
-        }
+        },
     },
     computed: {
-        currItem () {
+        currItem() {
             return this.$store.state.currItem;
-            }
-        },
-        mounted() {
+        }
+    },
+    watch: {
+        currItem: function () {
             this.loadMap()
-        },
+        }
+    },
     components: {
         GoogleMapsLoader
     }
