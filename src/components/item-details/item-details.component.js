@@ -14,7 +14,8 @@ export default {
     },
     methods: {
     loadMap() {
-            var defaultLoc = { lat: 32.088189, lng: 34.803140 };
+        console.log(this.currItem);
+            var defaultLoc = { lat: this.currItem.loc.lat, lng: this.currItem.loc.lng };
             const options = {
                 zoom: 15,
                 center: defaultLoc
@@ -23,11 +24,11 @@ export default {
                 this.map = new google.maps.Map(this.$refs.map, options);
                 navigator.geolocation.getCurrentPosition(position => {
                     this.placeMarkerAndPanTo({
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
+                        lat: this.currItem.loc.lat,
+                        lng: this.currItem.loc.lng
                     });
-                    this.loc.lat = position.coords.latitude;
-                    this.loc.lng = position.coords.longitude;
+                    this.loc.lat = this.currItem.loc.lat;
+                    this.loc.lng = this.currItem.loc.lng;
                 });
             });
         },

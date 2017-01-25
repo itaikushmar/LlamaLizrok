@@ -10,11 +10,23 @@ export default {
     data() {
         return {
             loc: { desc: '', lat: null, lng: null },
-            map: null
+            map: null,
+                isMobile : {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    }
+}
         }
     },
     methods: {
-        loadMap() {
+        // goToItemDet(id) {
+        //     console.log('hey');
+        //     this.$router.push(`item/${id}`);
+        // },
+        loadMap() { 
             var defaultLoc = { lat: 32.088189, lng: 34.803140 };
             const options = {
                 zoom: 15,
@@ -33,7 +45,8 @@ export default {
                     title: item.name,
                     map: this.map,
                 })
-                var contentString = `<div id="content">
+
+        var contentString = `<div id="content">
       <div id="siteNotice">
       </div>
       <h1 id="firstHeading" class="firstHeading">${item.name}</h1>
@@ -43,22 +56,54 @@ export default {
       </div>
       </div>`
 
+      var contentStringForMobile = `<div id="content">
+      <div id="siteNotice">
+      </div>
+      <h1 id="firstHeading" class="firstHeading">${item.name}</h1>
+      <div id="bodyContent">
+      <p>${item.desc}</p>
+      <img class="preview-img" style="max-width:50px" src="${item.imgUrl}" onclick="window.eventBus.$emit('goToItemDet', '${item._id}' )"
+      </div>
+      </div>`
+
+                
+
+                if(this.isMobile.iOS() !== null || this.isMobile.Android() !== null){
+                this.map.panTo(placeLatLng);
+                var infowindowForMobile = new google.maps.InfoWindow({
+                    content:contentStringForMobile
+                });
+            }
+            else {
                 this.map.panTo(placeLatLng);
                 var infowindow = new google.maps.InfoWindow({
                     content:contentString
                 });
+            }
+
+                
+
+                
+
+                if(this.isMobile.iOS() !== null || this.isMobile.Android() !== null){
+                marker.addListener('click', () => {
+                    infowindowForMobile.open(this.map, marker);
+
+                })
+            }
+            else {
                 marker.addListener('click', () => {
                     this.$router.push(`item/${item._id}`)
 
                 })
                 marker.addListener('mouseover', () => {
                     infowindow.open(this.map, marker);
-
                 })
                 marker.addListener('mouseout', () => {
                     infowindow.close(this.map, marker);
 
                 })
+            }
             })
         },
     },
