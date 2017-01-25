@@ -7,35 +7,45 @@ name: 'chat',
       chatMsgs: [],
       chatMsg: {
         nickName: 'Guest',
-        msg: ''
-        // speechState: 'play'
-      }
+        msg: '',
+      },
+        speechState: 'play'
     }
   },
+
   methods: {
     startVoiceRecognition(){
+      this.chatMsg.msg = '';
       console.log('starting');
+      console.log(this.speechState);
       this.recognition.start();
-      // this.speechState = 'stop';
+      this.speechState = 'stop';
     },
     stopVoiceRecognition(){
       console.log('stop');
       this.recognition.stop();
-      // this.speechState = 'play';
+      this.speechState = 'play';
     },
     
     sendMsg () {
       console.log('Sending: ', this.chatMsg)
       this.socket.emit('chat newMessage', this.chatMsg)
+    
       this.chatMsg.msg = ''
+    },
+    scrollcheck(){
+      window.scrollTo(0,document.body.scrollHeight);
     }
   },
+  
   created () {
     const nickName = window.prompt('Nick name?')
     this.chatMsg.nickName = nickName || this.chatMsg.nickName
     this.socket = io.connect('https://llamalizrok.herokuapp.com')
     this.socket.on('chat message', chatMsg => {
       this.chatMsgs.push(chatMsg)
+      this.scrollcheck();
+           
     })
   },
   mounted(){
@@ -43,7 +53,6 @@ name: 'chat',
             console.log('webkitSpeechRecognition not supported');
         } else {
             this.recognition = new webkitSpeechRecognition();
-            // this.recognition.continuous = true;
             this.recognition.lang = 'en-us';
             this.recognition.interimResults = true;
             this.recognition.onstart = () => {
@@ -60,16 +69,16 @@ name: 'chat',
                 }
                 console.log('allText', allText);
                 this.chatMsg.msg = allText;
-                //now you can show the results
+                // this.speechState = 'play';
             }
-            // this.recognition.onerror = (event) => {
-            //     console.log('onerror', event);
-            //     this.isRec = false;
-            // }
-            // this.recognition.onend = () => { 
-            //     console.log('done record')
-            //     if(this.isRec) this.recognition.start();
-            // }
+            this.recognition.onerror = (event) => {
+                console.log('onerror', event);
+                this.isRec = false;
+            }
+            this.recognition.onend = () => { 
+                console.log('done record')
+                if(this.isRec) this.recognition.start();
+            }
         }
     }
 }

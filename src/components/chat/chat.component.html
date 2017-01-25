@@ -4,8 +4,10 @@
     </ul>
     <form class="chat-input">
       <input  v-model="chatMsg.msg" />
-      <button @click.prevent="sendMsg">&#187;</button>
-      <button class="glyphicon glyphicon-play-circle" @click.prevent="startVoiceRecognition"></button>
-      <button class="glyphicon glyphicon-stop" @click.prevent="stopVoiceRecognition"></button>
+      <button class = "glyphicon glyphicon-send" @click.prevent="sendMsg"></button>
+      <button class="glyphicon glyphicon-headphones" v-if ="speechState === 'play'"@click.prevent="startVoiceRecognition"></button>
+      <button class="glyphicon glyphicon-stop" v-else @click.prevent="stopVoiceRecognition"></button>
+      <div>
+      </div>
     </form>
   </div>
