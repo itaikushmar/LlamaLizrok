@@ -33,9 +33,19 @@ export default {
                     title: item.name,
                     map: this.map,
                 })
+                var contentString = `<div id="content">
+      <div id="siteNotice">
+      </div>
+      <h1 id="firstHeading" class="firstHeading">${item.name}</h1>
+      <div id="bodyContent">
+      <p>${item.desc}</p>
+      <img class="preview-img" style="max-width:200px " src="${item.imgUrl}"
+      </div>
+      </div>`
+
                 this.map.panTo(placeLatLng);
                 var infowindow = new google.maps.InfoWindow({
-                    content: item.name + '+' + item.desc + '+' + item.imgUrl
+                    content:contentString
                 });
                 marker.addListener('click', () => {
                     this.$router.push(`item/${item._id}`)
@@ -43,6 +53,10 @@ export default {
                 })
                 marker.addListener('mouseover', () => {
                     infowindow.open(this.map, marker);
+
+                })
+                marker.addListener('mouseout', () => {
+                    infowindow.close(this.map, marker);
 
                 })
             })

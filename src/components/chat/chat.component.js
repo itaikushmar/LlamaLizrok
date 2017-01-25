@@ -71,14 +71,14 @@ name: 'chat',
                 this.chatMsg.msg = allText;
                 // this.speechState = 'play';
             }
-            this.recognition.onerror = (event) => {
-                console.log('onerror', event);
-                this.isRec = false;
-            }
-            this.recognition.onend = () => { 
-                console.log('done record')
-                if(this.isRec) this.recognition.start();
-            }
+            // this.recognition.onerror = (event) => {
+            //     console.log('onerror', event);
+            //     this.isRec = false;
+            // }
+            // this.recognition.onend = () => { 
+            //     console.log('done record')
+            //     if(this.isRec) this.recognition.start();
+            // }
         }
     }
 }
