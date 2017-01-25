@@ -4,9 +4,9 @@
     </ul>
     <form class="chat-input">
       <input  v-model="chatMsg.msg" />
-      <button class = "glyphicon glyphicon-send" @click.prevent="sendMsg"></button>
-      <button class="glyphicon glyphicon-headphones" v-if ="speechState === 'play'"@click.prevent="startVoiceRecognition"></button>
-      <button v-else @click.prevent="stopVoiceRecognition" style="background: url(../../assets/moustachellama.png)"></button>
+      <button class = "fa fa-paper-plane" @click.prevent="sendMsg"></button>
+      <button class="fa fa-microphone" v-if ="speechState === 'play'"@click.prevent="startVoiceRecognition"></button>
+      <button class="fa fa-stop" v-else @click.prevent="stopVoiceRecognition"></button>
       <div>
       </div>
     </form>
