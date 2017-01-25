@@ -32,11 +32,11 @@
 .nav {
   padding-top: 25px;
       @include for-mobile-only {
+    display: flex;
+    justify-content: center;
     background: #2C3E40;
     position: fixed;
     bottom: 0;
-    display: flex;
-    justify-content: center;
     height: 80x;  
     width: 100%;
     margin: 0;
@@ -48,4 +48,13 @@
 .container {
   padding: 0px;
   max-width: 100%;
+  @media (min-width: 800px) {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.navbar-header {
+        display: flex;
+    justify-content: center;
 }

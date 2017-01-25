@@ -6,7 +6,8 @@
     <div class="row control-group">
       <div class="form-group col-xs-12 floating-label-form-group controls">
         <label>Item Name:</label>
-        <input type="text" name="name" class="form-control" placeholder="Item Name" id="name" required data-validation-required-message="Please enter the name of your item">
+        <input type="text" name="name" class="form-control" placeholder="Item Name" id="name" required data-validation-required-message="Please enter the name of your item"
+        data-vv-rules="required">
         <p class="help-block text-danger"></p>
       </div>
     </div>
@@ -115,6 +116,7 @@
       </div>
     </div>
   </form>
-  <vue-toastr ref="toastr"></vue-toastr>
+        <vue-toastr ref="toastr"></vue-toastr>
+
   </div>
 </div>

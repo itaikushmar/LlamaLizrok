@@ -1,18 +1,20 @@
 <section class="below-nav">
-    <div class="selection_div">
-        <div>
+    <div class="selection">
+        <div  class="ctgs">
+            <div class="main-ctg">
             <label>Choose your Category:</label>
             <select v-model="currCtg.primaryCtg" v-on:change="setFilteredItems">
               <option value="All">All Categories</option>
               <option v-for="primaryCtg in ctgs">{{primaryCtg.name}}</option>
           </select>
         </div>
-        <div v-if="currCtg.primaryCtg !== 'All' && currCtg.primaryCtg !== 'Misc'">
+        <div class="secondary-ctg" v-if="currCtg.primaryCtg !== 'All' && currCtg.primaryCtg !== 'Misc'">
             <label>Type of {{currCtg.primaryCtg}}?</label>
             <select v-model="currCtg.secondaryCtg" v-on:change="setFilteredItems">
               <option value="All">All Categories</option>
             <option v-for="secondaryCtg in ctgs[ctgIndex].subs">{{secondaryCtg}}</option>
           </select>
+        </div>
         </div>
         <div class="view_icon">
             <button class="toggle-button" @click="toggleMap">

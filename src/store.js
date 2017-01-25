@@ -28,12 +28,15 @@ export default new Vuex.Store({
         });
     },
     addNewItem({ commit }, newItem) {
-      Vue.http.post('item', newItem)
-        .then(res => res.json())
+      return Vue.http.post('item', newItem)
+        .then(res => {
+        return res.json()})
         .then(item => {
           commit("setNewItem", item);
           return item;
-        });
+        })
+        .catch(err => {
+        })
     },
     getCurrItem({ commit  }, itemId) {
       Vue.http.get('item/' + itemId)
