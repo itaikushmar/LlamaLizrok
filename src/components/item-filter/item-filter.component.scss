@@ -3,7 +3,10 @@
 
 section {
     background-color: yellowgreen;
-    padding: 120px 0px 20px 10px;
+    padding: 110px 0px 12px 5px;
+    @include for-mobile-only {
+    padding: 105px 0px 5px 5px;
+        }
 }
 
 .glyphicon {
@@ -26,8 +29,12 @@ section {
         }  
 }
 
-.main-ctg {
-    text-align: left;
+.main-ctg,
+ .secondary-ctg {
+     text-align: center;
+        @include for-mobile-only {
+            text-align: left;
+        }
 }
 
 .ctgs {
@@ -42,4 +49,33 @@ section {
     position: absolute;
     top: 0;
     right: 0;
+}
+
+.form-style-5 fieldset{
+    border: none;
+}
+.form-style-5 legend {
+    font-size: 1.4em;
+}
+
+.form-style-5 select {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    background: rgba(255,255,255,.1);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 0;
+    outline: 0;
+    box-sizing: border-box; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box; 
+    background-color: #e8eeef;
+    color:#8a97a0;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    
+}
+
+.form-style-5 select:focus{
+    background: #d2d9dd;
 }

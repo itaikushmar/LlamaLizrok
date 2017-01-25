@@ -2,14 +2,10 @@
 @import '../../scss/layout';
 
 @include for-mobile-only {
-.item-filter {
-    position: fixed;
-    z-index: 900;  
-    width: 100%;
-    text-align: center;
-}
-
-.item-list {
-    padding-top: 120px;
-}
+    .item-filter {
+        position: fixed;
+        z-index: 900;  
+        width: 100%;
+        text-align: center;
+    }
 }
