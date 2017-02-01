@@ -33,6 +33,9 @@ export default {
                         }
                     })
             }
+            else {
+                this.$refs.toastr.w("You have to add a picture!", "Try Again!");
+            }
         },
         initCanvas() {
             this.canvas = this.$refs.canvas;

@@ -28,8 +28,9 @@ name: 'chat',
     },
     
     sendMsg () {
+      console.log('message: ' , this.message)
       console.log('Sending: ', this.chatMsg)
-      this.socket.emit('chat newMessage', this.chatMsg)
+      this.socket.emit('chat message', this.chatMsg.msg)
     
       this.chatMsg.msg = ''
     },
@@ -41,7 +42,8 @@ name: 'chat',
   created () {
     const nickName = window.prompt('Nick name?')
     this.chatMsg.nickName = nickName || this.chatMsg.nickName
-    this.socket = io.connect('https://llamalizrok.herokuapp.com')
+    this.socket = io.connect('https://coding-academy.net/llamalizrok', { path: '/llamalizrok/data/socket.io', secure: true });
+    console.log(this.socket)
     this.socket.on('chat message', chatMsg => {
       this.chatMsgs.push(chatMsg)
       this.scrollcheck();
@@ -69,16 +71,7 @@ name: 'chat',
                 }
                 console.log('allText', allText);
                 this.chatMsg.msg = allText;
-                // this.speechState = 'play';
             }
-            // this.recognition.onerror = (event) => {
-            //     console.log('onerror', event);
-            //     this.isRec = false;
-            // }
-            // this.recognition.onend = () => { 
-            //     console.log('done record')
-            //     if(this.isRec) this.recognition.start();
-            // }
         }
     }
 }

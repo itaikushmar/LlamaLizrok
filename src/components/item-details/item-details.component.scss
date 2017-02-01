@@ -36,8 +36,8 @@ img {
     max-height: em(500px);
     margin: em(10px);
       @include for-mobile-only {
-         max-width: 350px;
-         max-height: 350px;
+         max-width: 300px;
+         max-height: 300px;
   }
 }
 .map {
