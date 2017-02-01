@@ -28,9 +28,8 @@ name: 'chat',
     },
     
     sendMsg () {
-      console.log('message: ' , this.message)
       console.log('Sending: ', this.chatMsg)
-      this.socket.emit('chat message', this.chatMsg.msg)
+      this.socket.emit('chat message', this.chatMsg)
     
       this.chatMsg.msg = ''
     },
@@ -42,7 +41,7 @@ name: 'chat',
   created () {
     const nickName = window.prompt('Nick name?')
     this.chatMsg.nickName = nickName || this.chatMsg.nickName
-    this.socket = io.connect('https://coding-academy.net/llamalizrok', { path: '/llamalizrok/data/socket.io', secure: true });
+    this.socket = io.connect({ path: '/llamalizrok/data/socket.io', secure: true });
     console.log(this.socket)
     this.socket.on('chat message', chatMsg => {
       this.chatMsgs.push(chatMsg)
